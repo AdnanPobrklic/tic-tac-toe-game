@@ -1,4 +1,5 @@
 const tiles = document.querySelectorAll('.tile')
+let moveCounter = 0
 let isPlayerXturn = true
 let gameWon = false
 let winner = null
@@ -19,13 +20,18 @@ function clicked(e){
             isPlayerXturn = true
             this.innerText = 'O'
         }
+        moveCounter += 1
         addValues(this.classList, this.innerText);
         checkForWin()
         this.removeEventListener('click', clicked)
     }
 
     if(gameWon){
-        weHaveA_Winner()
+        winnerExecution()
+    }
+
+    if(moveCounter === 9){
+        drawExecution()
     }
 }
 
@@ -51,6 +57,7 @@ function addValues(index, value){
     }
 }
 
+
 function checkForWin(){
     for(let i = 0; i <= 2; i++){
         if(values[i][0] !== ' ' && values[i][0] === values[i][1] && values[i][1] === values[i][2]){
@@ -72,9 +79,23 @@ function checkForWin(){
     }
 }
 
-function weHaveA_Winner(){
+function winnerExecution(){
+    tiles.forEach(item =>  item.innerText === winner ? item.style.backgroundColor = 'red' : '')
     document.querySelector('h1').style.display = 'none'
+    document.querySelector('body').style.backgroundColor = 'yellow'
+    document.querySelector('h2').innerText = `Player ${winner} has won !`
     document.querySelector('.winner-container').style.display = 'flex'
     document.querySelector('button').addEventListener('click', () => location.reload());
 }
+
+
+function drawExecution(){
+    tiles.forEach(item => item.style.backgroundColor = 'red')
+    document.querySelector('h1').style.display = 'none'
+    document.querySelector('body').style.backgroundColor = 'green'
+    document.querySelector('h2').innerText = `It's a draw !`
+    document.querySelector('.winner-container').style.display = 'flex'
+    document.querySelector('button').addEventListener('click', () => location.reload());
+}
+
 

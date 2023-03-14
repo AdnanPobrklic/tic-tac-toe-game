@@ -14,6 +14,7 @@ body{
     align-items: center;
     justify-content: start;
     gap: 50px;
+    transition: 500ms ease-in-out all;
 }
 
 h1{
@@ -62,6 +63,8 @@ h1{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr 1fr;
+    transition: 200ms ease-in-out all;
+    border: 5px solid black;
 }
 
 .tile{
@@ -73,6 +76,7 @@ h1{
     justify-content: center;
     font-size: 6rem;
     font-family: 'Poppins', sans-serif;
+    transition: 500ms ease-in-out all;
 }
 
 .tile:hover{
@@ -111,7 +115,7 @@ h1{
     .tile{
         width: 150px;
         height: 150px;
-        font-size: 3.8rem;
+        font-size: 4rem;
     }
 
     .winner-container button{
@@ -131,7 +135,6 @@ h1{
     .tile{
         width: 120px;
         height: 120px;
-        font-size: 3rem;
     }
     .tile:hover{
         background-color: aquamarine;
@@ -154,7 +157,7 @@ h1{
     .tile{
         width: 90px;
         height: 90px;
-        font-size: 3rem;
+        font-size: 3.5rem;
     }
     .winner-container{
         flex-direction: column;
@@ -175,7 +178,7 @@ h1{
     .tile{
         width: 70px;
         height: 80px;
-        font-size: 2rem;
+        font-size: 3rem;
     }
     .winner-container h2{
         font-size: 1.5rem;
