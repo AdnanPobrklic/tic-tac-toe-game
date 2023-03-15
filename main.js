@@ -13,6 +13,8 @@ tiles.forEach(item => item.addEventListener('click', clicked))
 
 function clicked(e){
     if(!gameWon){
+        tiles.forEach(tile => tile.disabled = true);
+
         if(isPlayerXturn){
             this.innerText = 'X'
             isPlayerXturn = false
@@ -23,17 +25,17 @@ function clicked(e){
         moveCounter += 1
         addValues(this.classList, this.innerText);
         checkForWin()
+        
+        tiles.forEach(tile => tile.disabled = false);
+
         this.removeEventListener('click', clicked)
     }
-
-    if(gameWon){
-        winnerExecution()
-    }
-
-    if(moveCounter === 9){
+    
+    if(moveCounter === 9 && !gameWon){
         drawExecution()
     }
 }
+
 
 function addValues(index, value){
     if(index[1].includes('one')){
@@ -67,6 +69,9 @@ function checkForWin(){
         else if(values[0][i] !== ' ' && values[0][i] === values[1][i] && values[1][i] === values[2][i]){
             gameWon = true;
             winner = values[0][i]
+        }
+        if(gameWon){
+            winnerExecution()
         }
     }
 
