@@ -66,7 +66,7 @@ function checkForWin(){
         }
         else if(values[0][i] !== ' ' && values[0][i] === values[1][i] && values[1][i] === values[2][i]){
             gameWon = true;
-            winner = values[i][0]
+            winner = values[0][i]
         }
     }
 
@@ -80,7 +80,7 @@ function checkForWin(){
 }
 
 function winnerExecution(){
-    tiles.forEach(item =>  item.innerText === winner ? item.style.backgroundColor = 'red' : '')
+    tiles.forEach(item =>  item.innerText === winner ? item.style.backgroundColor = 'green' : item.style.backgroundColor = 'red')
     document.querySelector('h1').style.display = 'none'
     document.querySelector('body').style.backgroundColor = 'yellow'
     document.querySelector('h2').innerText = `Player ${winner} has won !`
